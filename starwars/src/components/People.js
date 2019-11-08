@@ -11,23 +11,22 @@ const CardContainer = styled.div`
     width: 90%;
     justify-content: space-around;
     align-items: center;
-
 `
 
-const People = () =>{
+const People = (props) =>{
 
     const [plist, setPlist] = useState([])
 
     useEffect(() =>{
-        axios.get(`https://swapi.co/api/people/`)
+        axios.get(`https://swapi.co/api/people/?search=${props.name}`)
         .then(response => {
-            console.log (response.data)
+            console.log (response.data, props.name)
             setPlist(response.data.results)
         })
         .catch(error =>{
             console.log(error)
         })
-    },[]);
+    },[props.name]);
 
     return (
         <div>

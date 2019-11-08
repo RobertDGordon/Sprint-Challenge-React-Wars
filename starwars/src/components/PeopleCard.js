@@ -14,6 +14,7 @@ const Card = styled.div`
     margin-bottom: 130px;
     padding: 10px;
     box-shadow: 2px 2px darkgray;
+    transition: all 0.3;
     p {
         text-transform: capitalize;
     }
@@ -25,6 +26,9 @@ const Card = styled.div`
         box-shadow: 2px 2px black;
         margin-top: -120px;
         border-radius: 5px;
+    }
+    &:hover {
+        transform: scale(1.2);
     }
 `
 
