@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios"
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -14,7 +15,7 @@ const Card = styled.div`
     margin-bottom: 130px;
     padding: 10px;
     box-shadow: 2px 2px darkgray;
-    transition: all 0.3;
+    transition: transform 0.3 ease;
     p {
         text-transform: capitalize;
     }
@@ -30,6 +31,10 @@ const Card = styled.div`
     &:hover {
         transform: scale(1.2);
     }
+`
+
+const Scroll = styled.div`
+    overflow: auto;
 `
 
 function PeopleCard(props){
@@ -56,15 +61,30 @@ function PeopleCard(props){
         imgnum = 9
     }
 
+    const [hlist, setHlist] = useState([])
+
+    useEffect(() =>{
+        axios.get(`${props.home}`)
+        .then(response => {
+            console.log ("homeworld here", response.data.name)
+            setHlist(response.data.name)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    },[props.home]);
+
     return (
         <Card>
             <img src={ require(`../img/${imgnum}.jpg`)} alt='Profile'></img>
             <h1>{props.name}</h1>
+            <Scroll>
             <p><span>Birth year: </span> {props.bd}</p>
+            <p><span>Homeworld: </span> {hlist} </p>
             <p><span>Gender:</span> {props.gender}</p>
             <p><span>Height:</span> {props.height}</p>
             <p><span>Weight:</span> {props.mass}</p>
-
+            </Scroll>
         </Card>
     )
 }

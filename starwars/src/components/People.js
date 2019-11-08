@@ -32,7 +32,7 @@ const People = (props) =>{
         <div>
             <CardContainer>
                 {plist.map((data, index)=>(
-                    <PeopleCard key={index} name={data.name} bd={data.birth_year} gender={data.gender} height={data.height} mass={data.mass}/>
+                    <PeopleCard key={index} name={data.name} home={data.homeworld} bd={data.birth_year} gender={data.gender} height={data.height} mass={data.mass}/>
                 ))}
             </CardContainer>
         </div>
