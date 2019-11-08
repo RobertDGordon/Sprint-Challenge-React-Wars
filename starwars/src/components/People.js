@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import PeopleCard from "./PeopleCard"
+
+const CardContainer = styled.div`
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+
+`
 
 const People = () =>{
 
@@ -19,11 +30,11 @@ const People = () =>{
 
     return (
         <div>
-            <div className="people">
+            <CardContainer>
                 {plist.map((data, index)=>(
                     <PeopleCard key={index} name={data.name} bd={data.birth_year} />
                 ))}
-            </div>
+            </CardContainer>
         </div>
     )
 }
