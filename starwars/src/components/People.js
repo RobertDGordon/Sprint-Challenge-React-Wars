@@ -18,7 +18,7 @@ const People = (props) =>{
     const [plist, setPlist] = useState([])
 
     useEffect(() =>{
-        axios.get(`https://swapi.co/api/people/?search=${props.name}`)
+        axios.get(`https://cors-anywhere.herokuapp.com/https://lambda-swapi.herokuapp.com/api/people/?search=${props.name}`)
         .then(response => {
             console.log (response.data, props.name)
             setPlist(response.data.results)
