@@ -5,10 +5,11 @@ import PeopleCard from "./PeopleCard"
 
 const CardContainer = styled.div`
     margin: 0 auto;
+    margin-top: 130px;
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
 `
@@ -32,7 +33,7 @@ const People = () =>{
         <div>
             <CardContainer>
                 {plist.map((data, index)=>(
-                    <PeopleCard key={index} name={data.name} bd={data.birth_year} />
+                    <PeopleCard key={index} name={data.name} bd={data.birth_year} gender={data.gender} height={data.height} mass={data.mass}/>
                 ))}
             </CardContainer>
         </div>
