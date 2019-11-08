@@ -62,17 +62,20 @@ function PeopleCard(props){
         imgnum = 9
     }
 
-    const [hlist, setHlist] = useState([])
+    const [homeworld, setHomeworld] = useState([])
 
     useEffect(() =>{
         axios.get(`${props.home}`)
         .then(response => {
             // console.log ("homeworld here", response.data.name)
-            setHlist(response.data.name)
+            setHomeworld(response.data.name)
         })
         .catch(error =>{
             console.log(error)
         })
+
+        return () => console.log("homeworld effect clean up")
+
     },[props.home]);
 
     // const [shiplist, setShiplist] = useState([])
@@ -101,7 +104,7 @@ function PeopleCard(props){
             <h1>{props.name}</h1>
             <Scroll>
             <p><span>Birth year: </span> {props.bd}</p>
-            <p><span>Homeworld: </span> {hlist} </p>
+            <p><span>Homeworld: </span> {homeworld} </p>
             <p><span>Gender:</span> {props.gender}</p>
             <p><span>Height:</span> {props.height}</p>
             <p><span>Weight:</span> {props.mass}</p>
