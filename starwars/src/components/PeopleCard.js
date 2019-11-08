@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"
 import styled from "styled-components";
+// import Starships from "./Starships"
 
 const Card = styled.div`
     display: flex;
@@ -66,13 +67,33 @@ function PeopleCard(props){
     useEffect(() =>{
         axios.get(`${props.home}`)
         .then(response => {
-            console.log ("homeworld here", response.data.name)
+            // console.log ("homeworld here", response.data.name)
             setHlist(response.data.name)
         })
         .catch(error =>{
             console.log(error)
         })
     },[props.home]);
+
+    // const [shiplist, setShiplist] = useState([])
+    // const [listships, setListships] = useState(false)
+
+    // useEffect(() =>{
+    //     if (props.starships.length > 0){
+    //         axios.get(`${props.starships}`)
+    //         .then(response => {
+    //             console.log ("starships here", props.starships)
+    //             setShiplist(response.data)
+    //             setListships(true)
+    //         })
+    //         .catch(error =>{
+    //             console.log(error)
+    //         })
+    //     }else {
+    //         setShiplist ({"name":["none"]})
+    //     }
+    // },[props.starships]);
+    
 
     return (
         <Card>
@@ -84,6 +105,11 @@ function PeopleCard(props){
             <p><span>Gender:</span> {props.gender}</p>
             <p><span>Height:</span> {props.height}</p>
             <p><span>Weight:</span> {props.mass}</p>
+            {/* <p><span>Starships:</span> {shiplist}</p>
+             {/* {shiplist.map((data, index)=>(
+                    <Starships key={index} name={data.name}/>
+                ))}</p> */}
+            
             </Scroll>
         </Card>
     )
